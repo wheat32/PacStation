@@ -61,7 +61,7 @@ void MainWindow::buildSidebar(QWidget* sidebar)
     m_btnInstalled = new SidebarButton(
         tr("Installed"),
         QStringLiteral(":/assets/boxes.svg"),
-        QStringLiteral(":/assets/boxes-fill.svg"),
+        QStringLiteral(":/assets/boxes.svg"), // TODO replace this with a -filled variant when one exists
         sidebar);
 
     m_btnUpdates = new SidebarButton(
