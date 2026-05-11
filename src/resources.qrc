@@ -1,0 +1,30 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/assets">
+        <file alias="house.svg">assets/house.svg</file>
+        <file alias="house-fill.svg">assets/house-fill.svg</file>
+        <file alias="boxes.svg">assets/boxes.svg</file>
+        <file alias="boxes-fill.svg">assets/boxes-fill.svg</file>
+        <file alias="arrow-up-circle.svg">assets/arrow-up-circle.svg</file>
+        <file alias="arrow-up-circle-fill.svg">assets/arrow-up-circle-fill.svg</file>
+        <file alias="cloud-download.svg">assets/cloud-download.svg</file>
+        <file alias="cloud-download-fill.svg">assets/cloud-download-fill.svg</file>
+        <file alias="gear.svg">assets/gear.svg</file>
+        <file alias="gear-fill.svg">assets/gear-fill.svg</file>
+        <file alias="info-circle.svg">assets/info-circle.svg</file>
+        <file alias="info-circle-fill.svg">assets/info-circle-fill.svg</file>
+        <file alias="collection.svg">assets/collection.svg</file>
+        <file alias="collection-fill.svg">assets/collection-fill.svg</file>
+        <file alias="filter.svg">assets/filter.svg</file>
+        <file alias="sort-down.svg">assets/sort-down.svg</file>
+        <file alias="sort-up.svg">assets/sort-up.svg</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>version.json</file>
+        <file>style.qss</file>
+    </qresource>
+    <qresource prefix="/init">
+
+    </qresource>
+</RCC>
+

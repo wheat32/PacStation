@@ -1,0 +1,126 @@
+/* ==========================================================================
+   PacStation – Application Stylesheet
+   Color tokens are substituted at runtime by ThemeManager::buildStyleSheet().
+
+   Token reference:
+     %ACCENT_COLOR%   – system accent hex  (e.g. #3daee9)
+     %ACCENT_BG%      – accent rgba with low alpha for selected BG
+     %SIDEBAR_BG%     – sidebar widget background
+     %CONTENT_BG%     – main content area background
+     %HOVER_BG%       – hover state rgba
+     %BORDER_COLOR%   – subtle divider rgba
+     %TEXT_COLOR%     – primary text / icon colour
+     %MUTED_TEXT%     – secondary / placeholder text
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Application-wide base
+   -------------------------------------------------------------------------- */
+QMainWindow, QWidget {
+    font-family: "Segoe UI", "Noto Sans", "Roboto", sans-serif;
+    font-size: 13px;
+    color: %TEXT_COLOR%;
+    background-color: %CONTENT_BG%;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+QWidget#sidebar {
+    background-color: %SIDEBAR_BG%;
+    border-right: 1px solid %BORDER_COLOR%;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar buttons  (SidebarButton inherits QToolButton)
+   -------------------------------------------------------------------------- */
+SidebarButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    color: %TEXT_COLOR%;
+    font-size: 11px;
+    padding: 6px 4px 6px 4px;
+    min-width: 72px;
+    max-width: 80px;
+    min-height: 60px;
+}
+
+SidebarButton:hover {
+    background-color: %HOVER_BG%;
+}
+
+SidebarButton:pressed {
+    background-color: %ACCENT_BG%;
+}
+
+SidebarButton:checked {
+    background-color: %ACCENT_BG%;
+    color: %ACCENT_COLOR%;
+    font-weight: 600;
+}
+
+SidebarButton:checked:hover {
+    background-color: %ACCENT_BG%;
+}
+
+/* --------------------------------------------------------------------------
+   Page stack
+   -------------------------------------------------------------------------- */
+QStackedWidget#pageStack {
+    background-color: %CONTENT_BG%;
+}
+
+/* --------------------------------------------------------------------------
+   Page placeholder label
+   -------------------------------------------------------------------------- */
+QLabel#pagePlaceholder {
+    font-size: 18px;
+    color: %MUTED_TEXT%;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbars (global style for future pages)
+   -------------------------------------------------------------------------- */
+QScrollBar:vertical {
+    background: transparent;
+    width: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: %BORDER_COLOR%;
+    border-radius: 4px;
+    min-height: 24px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: %MUTED_TEXT%;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar:horizontal {
+    background: transparent;
+    height: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background: %BORDER_COLOR%;
+    border-radius: 4px;
+    min-width: 24px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: %MUTED_TEXT%;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+

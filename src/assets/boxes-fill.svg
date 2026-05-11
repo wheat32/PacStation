@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-boxes-fill" viewBox="0 0 16 16">
+  <!-- Top box – top face -->
+  <polygon points="8,1.076 10.742,2.643 8,4.21 5.258,2.643"/>
+  <!-- Top box – right face -->
+  <polygon points="11.25,3.504 11.25,6.638 8.5,8.21 8.5,5.076"/>
+  <!-- Top box – left face -->
+  <polygon points="4.75,3.504 4.75,6.638 7.5,8.21 7.5,5.076"/>
+  <!-- Left-bottom box – top face -->
+  <polygon points="4.25,7.504 6.992,9.071 4.25,10.638 1.508,9.071"/>
+  <!-- Left-bottom box – front (right) face -->
+  <polygon points="7.5,9.933 7.5,13.067 4.75,14.638 4.75,11.504"/>
+  <!-- Left-bottom box – left face -->
+  <polygon points="1,9.933 1,13.067 3.75,14.638 3.75,11.504"/>
+  <!-- Right-bottom box – top face -->
+  <polygon points="9.008,9.071 11.75,7.504 14.492,9.071 11.75,10.638"/>
+  <!-- Right-bottom box – front (left) face -->
+  <polygon points="8.5,9.933 8.5,13.067 11.25,14.638 11.25,11.504"/>
+  <!-- Right-bottom box – right face -->
+  <polygon points="15,9.933 15,13.067 12.25,14.638 12.25,11.504"/>
+</svg>
+
