@@ -1,8 +1,8 @@
 #pragma once
 
-#include <QToolButton>
 #include <QColor>
 #include <QString>
+#include <QToolButton>
 
 /// A checkable sidebar navigation button.
 /// Displays a large icon above a short label, centered – similar to the
@@ -14,11 +14,11 @@ class SidebarButton : public QToolButton
 
 public:
     SidebarButton(const QString& label,
-                  const QString& normalSvgPath,   // Qt resource path
-                  const QString& filledSvgPath,   // Qt resource path
+                  const QString& normalSvgPath,
+                  const QString& filledSvgPath,
                   QWidget* parent = nullptr);
 
-    /// Call after the ThemeManager is ready (or on theme change) to refresh icons/colors.
+    /// Call after the ThemeManager is ready (or on theme change).
     void applyTheme(const QColor& foreground, const QColor& accent);
 
 private slots:

@@ -138,5 +138,6 @@ QString ThemeManager::buildStyleSheet() const
     css.replace(QLatin1String("%TEXT_COLOR%"),   hex(m_foreground));
     css.replace(QLatin1String("%MUTED_TEXT%"),   rgba(m_mutedText));
 
+
     return css;
 }

@@ -34,34 +34,40 @@ QWidget#sidebar {
 /* --------------------------------------------------------------------------
    Sidebar buttons  (SidebarButton inherits QToolButton)
    -------------------------------------------------------------------------- */
+/* SidebarButton
+   The "border: 1px solid transparent" on every state is intentional:
+   it forces Qt off the native-style rendering path so that the
+   background-color change on :hover covers the ENTIRE widget rectangle
+   (icon area AND label area) uniformly. Without it, some styles
+   (e.g. Breeze/KDE) paint the text label area with the window colour. */
 SidebarButton {
     background-color: transparent;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 8px;
     color: %TEXT_COLOR%;
     font-size: 11px;
-    padding: 6px 4px 6px 4px;
+    padding: 6px 4px;
     min-width: 72px;
     max-width: 80px;
     min-height: 60px;
 }
-
 SidebarButton:hover {
     background-color: %HOVER_BG%;
+    border: 1px solid transparent;
 }
-
 SidebarButton:pressed {
     background-color: %ACCENT_BG%;
+    border: 1px solid transparent;
 }
-
 SidebarButton:checked {
     background-color: %ACCENT_BG%;
+    border: 1px solid transparent;
     color: %ACCENT_COLOR%;
     font-weight: 600;
 }
-
 SidebarButton:checked:hover {
     background-color: %ACCENT_BG%;
+    border: 1px solid transparent;
 }
 
 /* --------------------------------------------------------------------------
@@ -123,4 +129,221 @@ QScrollBar::add-line:horizontal,
 QScrollBar::sub-line:horizontal {
     width: 0;
 }
+
+/* ==========================================================================
+   Settings pages
+   ========================================================================== */
+
+/* Hub title */
+QLabel#settingsHubTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: %TEXT_COLOR%;
+}
+
+/* Sub-page title (shown with back button) */
+QLabel#settingsPageTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: %TEXT_COLOR%;
+}
+
+/* Section header – muted all-caps label above a group of rows */
+QLabel#settingsSectionHeader {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: %MUTED_TEXT%;
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+
+/* Back button – pill-shaped, visible weight */
+QPushButton#settingsBackBtn {
+    font-size: 14px;
+    font-weight: 600;
+    color: %TEXT_COLOR%;
+    background-color: %HOVER_BG%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 18px;
+    padding: 7px 18px 7px 14px;
+    min-width: 80px;
+}
+QPushButton#settingsBackBtn:hover {
+    background-color: %ACCENT_BG%;
+    color: %ACCENT_COLOR%;
+    border-color: %ACCENT_COLOR%;
+}
+QPushButton#settingsBackBtn:pressed {
+    background-color: %ACCENT_BG%;
+}
+
+/* ── SettingRow ──────────────────────────────────────────── */
+QFrame#settingRow {
+    background-color: %CONTENT_BG%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 8px;
+    min-height: 68px;
+}
+QFrame#settingRow:hover {
+    background-color: %HOVER_BG%;
+}
+
+/* All QWidgets and QLabels INSIDE a SettingRow must be transparent
+   so the parent frame's :hover background-color shows through.
+   Some styles (e.g. Breeze) otherwise paint child widgets with the
+   window colour, leaving visible unaffected rectangles on hover.
+   Controls with their own explicit QSS rules (e.g. #settingsCombo,
+   #toggleStatusLabel) override this via their more-specific selectors. */
+QFrame#settingRow QWidget {
+    background-color: transparent;
+}
+QFrame#settingRow QLabel {
+    background-color: transparent;
+}
+
+/* Title and subtitle inside a SettingRow */
+QLabel#settingRowTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: %TEXT_COLOR%;
+}
+QLabel#settingRowSubtitle {
+    font-size: 12px;
+    color: %MUTED_TEXT%;
+}
+
+/* Chevron "›" on navigation rows */
+QLabel#settingRowChevron {
+    font-size: 22px;
+    color: %MUTED_TEXT%;
+}
+
+/* Icon placeholder – invisible 36×36 spacer for future icons */
+QWidget#settingRowIcon {
+    background: transparent;
+}
+
+/* Drag handle in SourcePriorityList rows */
+QLabel#dragHandle {
+    font-size: 18px;
+    color: %MUTED_TEXT%;
+}
+
+/* ON / OFF status label beside ToggleWithStatus */
+QLabel#toggleStatusLabel {
+    font-size: 11px;
+    font-weight: 700;
+    color: %MUTED_TEXT%;
+    letter-spacing: 0.4px;
+}
+
+/* ── List widgets inside settings ───────────────────────── */
+QListWidget#sourcePriorityList,
+QListWidget#overridesList,
+QListWidget#mirrorList,
+QListWidget#reposList,
+QListWidget#flatpakRemotesList {
+    background-color: %CONTENT_BG%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 8px;
+    padding: 4px;
+    color: %TEXT_COLOR%;
+}
+QListWidget#sourcePriorityList::item,
+QListWidget#overridesList::item,
+QListWidget#mirrorList::item,
+QListWidget#reposList::item,
+QListWidget#flatpakRemotesList::item {
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+QListWidget#sourcePriorityList::item:selected,
+QListWidget#overridesList::item:selected,
+QListWidget#mirrorList::item:selected,
+QListWidget#reposList::item:selected,
+QListWidget#flatpakRemotesList::item:selected {
+    background-color: %ACCENT_BG%;
+    color: %TEXT_COLOR%;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+QPushButton#settingsAddBtn {
+    background-color: %ACCENT_BG%;
+    color: %ACCENT_COLOR%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: 600;
+}
+QPushButton#settingsAddBtn:hover {
+    background-color: %HOVER_BG%;
+}
+
+QPushButton#settingsRemoveBtn {
+    background-color: transparent;
+    color: %MUTED_TEXT%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 6px;
+    padding: 6px 14px;
+}
+QPushButton#settingsRemoveBtn:hover {
+    color: %TEXT_COLOR%;
+    background-color: %HOVER_BG%;
+}
+
+QPushButton#settingsSaveBtn {
+    background-color: %ACCENT_COLOR%;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 20px;
+    font-weight: 600;
+}
+QPushButton#settingsSaveBtn:hover {
+    opacity: 0.9;
+}
+QPushButton#settingsSaveBtn:disabled {
+    background-color: %BORDER_COLOR%;
+    color: %MUTED_TEXT%;
+}
+
+/* ── ComboBox ────────────────────────────────────────────── */
+QComboBox#settingsCombo {
+    background-color: %CONTENT_BG%;
+    color: %TEXT_COLOR%;
+    border: 1px solid %BORDER_COLOR%;
+    border-radius: 6px;
+    padding: 5px 32px 5px 10px;
+    min-width: 150px;
+}
+QComboBox#settingsCombo::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    width: 28px;
+    border: none;
+}
+QComboBox#settingsCombo::down-arrow {
+    image: url(:/assets/caret-down-fill.svg);
+    width: 12px;
+    height: 12px;
+    color: %MUTED_TEXT%;
+}
+QComboBox#settingsCombo::down-arrow:on {
+    image: url(:/assets/caret-left-fill.svg);
+    width: 12px;
+    height: 12px;
+    color: %MUTED_TEXT%;
+}
+QComboBox#settingsCombo::down-arrow:disabled {
+    opacity: 0.4;
+}
+QComboBox#settingsCombo QAbstractItemView {
+    background-color: %CONTENT_BG%;
+    color: %TEXT_COLOR%;
+    border: 1px solid %BORDER_COLOR%;
+    selection-background-color: %ACCENT_BG%;
+    outline: none;
+}
+
 

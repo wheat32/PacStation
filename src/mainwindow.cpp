@@ -1,9 +1,13 @@
 #include "mainwindow.h"
 #include "sidebarbutton.h"
 #include "thememanager.h"
+#include "pages/homepage.h"
+#include "pages/installedpage.h"
+#include "pages/updatespage.h"
+#include "pages/downloadspage.h"
+#include "pages/settingspage.h"
 
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QVBoxLayout>
 #include <QWidget>
 
@@ -41,6 +45,11 @@ void MainWindow::buildLayout()
     rootLayout->addWidget(sidebar);
 
     rootLayout->addWidget(m_stack, 1);
+
+    // Both m_btnSettings (set by buildSidebar) and m_settingsPage (set by
+    // buildPages) are now valid – safe to connect.
+    connect(m_btnSettings, &SidebarButton::clicked,
+            m_settingsPage, &SettingsPage::navigateToHub);
 }
 
 // ---------------------------------------------------------------------------
@@ -124,30 +133,19 @@ void MainWindow::buildSidebar(QWidget* sidebar)
 }
 
 // ---------------------------------------------------------------------------
-void MainWindow::buildPages() const
+void MainWindow::buildPages()
 {
-    m_stack->addWidget(makePage(tr("Home")));
-    m_stack->addWidget(makePage(tr("Installed")));
-    m_stack->addWidget(makePage(tr("Updates")));
-    m_stack->addWidget(makePage(tr("Downloads")));
-    m_stack->addWidget(makePage(tr("Settings")));
+    m_stack->addWidget(new HomePage);
+    m_stack->addWidget(new InstalledPage);
+    m_stack->addWidget(new UpdatesPage);
+    m_stack->addWidget(new DownloadsPage);
+
+    m_settingsPage = new SettingsPage;
+    m_stack->addWidget(m_settingsPage);
+
     m_stack->setCurrentIndex(0);
 }
 
-// ---------------------------------------------------------------------------
-QWidget* MainWindow::makePage(const QString& title)
-{
-    QWidget* page      = new QWidget;
-    QVBoxLayout* layout = new QVBoxLayout(page);
-    layout->setAlignment(Qt::AlignCenter);
-
-    QLabel* label = new QLabel(QStringLiteral("This is the %1 page").arg(title));
-    label->setObjectName(QStringLiteral("pagePlaceholder"));
-    label->setAlignment(Qt::AlignCenter);
-    layout->addWidget(label);
-
-    return page;
-}
 
 // ---------------------------------------------------------------------------
 void MainWindow::applyTheme()

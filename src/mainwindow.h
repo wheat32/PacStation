@@ -4,6 +4,7 @@
 #include <QStackedWidget>
 
 class SidebarButton;
+class SettingsPage;
 
 class MainWindow : public QMainWindow
 {
@@ -13,7 +14,8 @@ public:
     explicit MainWindow(QWidget* parent = nullptr);
 
 private:
-    QStackedWidget* m_stack = nullptr;
+    QStackedWidget* m_stack        = nullptr;
+    SettingsPage*   m_settingsPage = nullptr;
 
     SidebarButton* m_btnHome      = nullptr;
     SidebarButton* m_btnInstalled = nullptr;
@@ -23,8 +25,6 @@ private:
 
     void buildLayout();
     void buildSidebar(QWidget* sidebar);
-    void buildPages() const;
-    static QWidget* makePage(const QString& title);
+    void buildPages();
     void applyTheme();
 };
-

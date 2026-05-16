@@ -35,17 +35,13 @@ void SidebarButton::applyTheme(const QColor& foreground, const QColor& accent)
 void SidebarButton::onToggled(const bool checked)
 {
     refreshIcon(checked);
+    update();
 }
 
 void SidebarButton::refreshIcon(const bool checked)
 {
     if (checked && !m_filledPath.isEmpty())
-    {
         setIcon(createColoredIcon(m_filledPath, m_accent, iconSize()));
-    }
     else
-    {
         setIcon(createColoredIcon(m_normalPath, m_foreground, iconSize()));
-    }
 }
-

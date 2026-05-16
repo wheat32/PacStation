@@ -17,6 +17,8 @@
         <file alias="filter.svg">assets/filter.svg</file>
         <file alias="sort-down.svg">assets/sort-down.svg</file>
         <file alias="sort-up.svg">assets/sort-up.svg</file>
+        <file alias="caret-down-fill.svg">assets/caret-down-fill.svg</file>
+        <file alias="caret-left-fill.svg">assets/caret-left-fill.svg</file>
     </qresource>
     <qresource prefix="/">
         <file>version.json</file>
